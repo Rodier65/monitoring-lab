@@ -1,3 +1,4 @@
 grafana-data/
 .env
 *.log
+loki-data/
