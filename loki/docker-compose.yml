@@ -6,7 +6,7 @@ services:
     ports:
       - "3100:3100"
     volumes:
-      - ./loki-data/:loki
+      - ./loki-data/:/loki
     networks:
       - applications-network
 
