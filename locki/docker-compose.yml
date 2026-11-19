@@ -1,12 +1,12 @@
 services:
-  locki:
-    image: grafana/locki:3.5.0
-    container_name: locki
+  loki:
+    image: grafana/loki:3.5.0
+    container_name: loki
     restart: always
     ports:
       - "3100:3100"
     volumes:
-      - ./locki-data/locki:locki
+      - ./loki-data/:loki
     networks:
       - applications-network
 
