@@ -1,0 +1,18 @@
+services:
+  locki:
+    image: grafana/locki:3.5.0
+    container_name: locki
+    restart: always
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./locki-data/locki:locki
+    networks:
+      - applications-network
+
+
+networks:
+  applications-network:
+    name: applications-network
+    external: true
+    
