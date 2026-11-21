@@ -10,7 +10,21 @@ discovery.docker "containers" {
 loki.source.docker "containers" {
   host       = "unix:///var/run/docker.sock"
   targets    = discovery.docker.containers.targets
-  labels     = {"platform" = "docker"}
+
+  labels = {
+    platform = "docker"
+  }
+
+  forward_to = [loki.process.process_logs.receiver]
+}
+
+loki.process "process_logs" {
+  stage.static_labels {
+    values = {
+      environment = "lab"
+    }
+  }
+
   forward_to = [loki.write.local.receiver]
 }
 
