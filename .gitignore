@@ -1,4 +1,5 @@
 grafana-data/
 .env
 *.log
-loki-data/
+loki/loki-data/
+alloy/alloy-data/
