@@ -1,0 +1,22 @@
+services:
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager
+    restart: unless-stopped
+
+    ports:
+      - "9093:9093"
+
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+
+    command:
+      - "--config.file=/etc/alertmanager/alertmanager.yml"
+
+    networks:
+      - applications-network
+
+networks:
+  applications-network:
+    name: applications-network
+    external: true

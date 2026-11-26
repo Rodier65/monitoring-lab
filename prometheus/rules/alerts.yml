@@ -1,0 +1,11 @@
+groups:
+  - name: monitoring
+    rules:
+      - alert: NodeExporterDown
+        expr: up{job="node-exporter"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Node Exporter is down"
+          description: "Node Exporter has been unavailable for more than 1 minute."
